@@ -10,7 +10,7 @@ def list(request):
     context = {
         'tasks': tasks
     }
-    return render(request, 'task/list.html', context)
+    return render(request, 'list.html', context)
 
 
 def detail(request, pk):
@@ -18,7 +18,7 @@ def detail(request, pk):
     context = {
         'task': task
     }
-    return render(request, 'task/detail.html', context)
+    return render(request, 'detail.html', context)
 
 
 def create(request):
@@ -28,7 +28,7 @@ def create(request):
         if form.is_valid():
             form.save()
             send_mail(
-                subject="A task has been createsd",
+                subject="A task has been created",
                 message="Go to the list to see it",
                 from_email="test@test.com",
                 recipient_list=["test2@test.com"]
@@ -38,7 +38,7 @@ def create(request):
     context = {
         'form': form
     }
-    return render(request, 'task/create.html', context)
+    return render(request, 'create.html', context)
 
 
 def update(request, pk):
@@ -53,7 +53,7 @@ def update(request, pk):
     context = {
         'form': form
     }
-    return render(request, 'task/update.html', context)
+    return render(request, 'update.html', context)
 
 
 def delete(request, pk):
