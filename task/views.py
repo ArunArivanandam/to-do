@@ -1,8 +1,17 @@
 from django.urls import reverse
 from django.shortcuts import redirect, render
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, CreateUserCreationForm
 from django.core.mail import send_mail
+from django.views import generic
+
+
+class SignupView(generic.CreateView):
+    template_name = "registration/signup.html"
+    form_class = CreateUserCreationForm
+
+    def get_success_url(self):
+        return reverse("login")
 
 
 def list(request):
