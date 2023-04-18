@@ -4,6 +4,7 @@ from .models import Task
 from .forms import TaskForm, CreateUserCreationForm
 from django.core.mail import send_mail
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 
 
 class SignupView(generic.CreateView):
@@ -22,6 +23,7 @@ def list(request):
     return render(request, 'list.html', context)
 
 
+@login_required
 def detail(request, pk):
     task = Task.objects.get(id=pk)
     context = {
